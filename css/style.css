@@ -335,9 +335,11 @@ p.tooltip:hover::after {
 }
 
 .column {
-  width: 49%; /* Adjust as needed */
-  margin: 10px auto;
+  width: 50%; /* Adjust as needed */
+  /* margin: 10px auto; */
+  margin-left: 18%;
   font-size: 1.5rem;
+
 }
 .column strong {
   color: cadetblue;

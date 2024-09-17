@@ -1,0 +1,55 @@
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding-top: 100px;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+img {
+    display: block;
+}
+
+/* fixed positiong ကိုသုံးပြုထားခြင်းသည် scroll ပြုလုပ်သော်လဲ တည်နေရာရွေလျားခြင်းမရှိပါ */
+header {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100px;
+    border-bottom: 10px solid darkblue;
+    background-color: lightblue;
+}
+
+.container {
+    width: 600px;
+    height: 600px;
+    margin: 20px auto;
+    border: 15px solid black;
+}
+
+/* relative positiong သည် Normal document flow မှ မထွက်စေဘဲရွေ့လျားစေပါသည်၊ အထက် အောက် ဘယ် ညာရွေ့လျား၍ မူလနေရာမှ offset
+ပြူလုပ်နိုင်သည်။ */
+.absolute-container {
+    position: relative;
+}
+
+#relative-box-2 {
+    position: relative;
+    left: 200px;
+}
+
+/* absolute positioning သည် Normal document flow မှ ထွက်ထားပြီး အခြား elements များကို ထိခိုက်ခြင်းမရှိပါ။ အထက် အောက် ဘယ် ညာ
+ရွေ့လျား၍ position ထားနိုင်ပါသည်။ */
+#absolute-box-2 {
+    position: absolute;
+    left: 619px;
+    bottom: 67%;
+}

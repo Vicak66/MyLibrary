@@ -1,0 +1,18 @@
+.section {
+    background-color: rgb(160, 230, 55);
+}
+.section img {
+    width: 200px;
+}
+.header {
+    color: darkblue;
+}
+#email {
+    background-color: aliceblue;
+}
+#github {
+    background-color: antiquewhite;
+}
+#bloger {
+    background-color: aqua;
+}

@@ -70,7 +70,7 @@ input {
     background-color: var(--primary-bg-color);
     color: var(--tertiary-color);
     padding: 3%;
-    border-radius: 100px;
+    border-radius: 10px;
     margin-bottom: 5%;
     text-align: left;
 }

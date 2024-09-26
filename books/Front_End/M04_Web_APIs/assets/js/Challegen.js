@@ -2,7 +2,7 @@ let currentQuestion = 0;
 let timeLeft = 36;
 let timer;
 let score = 0;
-//
+// Initial variables to kkeep track of quiz progress
  
 let questions = [
     {
@@ -17,22 +17,24 @@ let questions = [
     },
     {
         question: "What is the largest ocean on Earth?",
-        options: ["Atl Ocean", "Ind Ocean", "Arc Ocean", "Pac Ocean"],
-        answer: "Pac Ocean",
+        options: ["Atl Ocean", "Ind Ocean", "Arc Ocean", "Pacific Ocean"],
+        answer: "Pacific Ocean",
     },
 ];
-//
+// Example questons array
 
 function startQuiz() {
-    const username = document.getElementById("username").valur;
+    const username = document.getElementById("username").value;
     if (username.trim() === "") {
         alert("Please enter your name.");
         return;
     }
 
-    //
+    // Hide the start screen and show the quiz screen
     document.getElementById("start-container").style.display = "none";
     document.getElementById("quiz-container").style.display = "block";
+
+    questions = shuffleArray(questions);
 
     displayQuestion();
     // Start the timer
@@ -48,10 +50,10 @@ function displayQuestion() {
     const options = questions[currentQuestion].options;
 
     const questionHtml = `
-        <div class="question-number">Question ${currentQuestion + 1}: </div>
+        <div class="question-number">Question ${currentQuestion + 1}:</div>
         <div class="question-text">${questionText}</div>
-        <div class="options">$
-            ${options.map((option)=> createOption(option)).join("")}
+        <div class="options">
+            ${options.map((option) => createOption(option)).join("")}
         </div>
     `;
 
@@ -67,8 +69,8 @@ function createOption(option) {
     return `
         <div class="option">
             <input type="radio" name="answer" value="${option}"> ${option}
-        </div>;
-    `
+        </div>
+    `;
 }
 
 // Function to start the countdown timer
@@ -115,5 +117,59 @@ function disableOptions() {
         input.disabled = true;
     });
 }
+
 // Function to disable all options (used after the answer is selected or time runs out)
-function nextQuestion() {}
+function nextQuestion() {
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        timeLeft = 36; // Reset the timer
+        displayQuestion(); // Show the next question
+        startTimer(); // Start the timer again
+        document.getElementById("feedback").textContent = "";
+    } else {
+        showResult(); // Show the result if the quiz is finished
+    }
+}
+
+function showResult() {
+    document.getElementById("quiz-container").style.display = "none";
+    document.getElementById("result-container").style.display = "block";
+
+    const username = document.getElementById("username").value;
+    const percentage = (score / questions.length) * 100;
+
+    let resultText;
+    if (percentage >= 50) {
+        resultText = `<span class="pass">You Pass!</span>`;
+    } else {
+        resultText = `<span class="fail">You Fail!</span>`;
+    }
+
+    document.getElementById("result").innerHTML = `
+        ${username}, you scored ${score} out of ${questions.length}!<br>${resultText}
+    `;
+}
+
+// Function to restart the quiz
+function testAgain() {
+    currentQuestion = 0;
+    timeLeft = 36;
+    score = 0;
+    questions = shuffleArray(questions);
+
+    document.getElementById("result-container").style.display = "none";
+    document.getElementById("quiz-container").style.display = "block";
+
+    displayQuestion();
+    startTimer();
+}
+
+// Function to shuffle an array (used to randomize questions and options)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}

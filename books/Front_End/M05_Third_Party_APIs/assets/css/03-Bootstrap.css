@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.img-fluid {
+    padding-top: 13px;
+    height: 580px;
+}

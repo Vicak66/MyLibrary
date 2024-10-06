@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "03-Demon-Dyanmic.html",
         "04-Deconstruct-Parameters.html",
         "05-Fetch-GitHub-Issues.html",
+        "05-single-repo.html",
         "06-Git-Guide.html",
         "07-Challenge.html",
         "08-Algorithms.html",

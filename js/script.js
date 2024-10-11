@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "06-Git-Guide.html",
         "07-Challenge.html",
         "08-Algorithms.html",
+        "09-Md-Single.html",
         "09-Module-Project.html",
         "10-Recordings.html",
         "11-Quiz.html",
